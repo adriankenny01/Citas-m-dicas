@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Area Medica {% endblock %}
+
+{% block body %} 
+
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item active">Área</li>
+            </ol>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Áreas Médicas
+                    </h4>
+                    <a class="btn btn-primary float-right" href="/medic/category/new/">Nuevo</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        {% if categories %}
+
+                            <table class="table data-show" id="categories">
+                                    <thead class=" text-primary">
+                                        <tr>
+                                            <th>Area</th>
+                                            <th>Icono</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for category in categories %}
+                                        <tr>
+                                            <td>{{ category.area }}</td>
+                                            <td><i class="{{ category.icon }}" ></i></td>
+                                            <td>{{ category.state }}</td>
+                                            <td>
+                                                <a data-toggle="tooltip" data-placement="top" title="Ver" href="/medic/category/{{ category.id }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a data-toggle="tooltip" data-placement="top" title="Editar" href="/medic/category/edit/{{ category.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                                                <a data-toggle="tooltip" data-placement="top" title="Eliminar" href="#" data-toggle="modal" data-target="#delete-category" class="btn btn-danger delete-article" data-id="{{ category.id }}"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
+                                        </tr> 
+                                        {% endfor %}
+                                    </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <h4 class="alert-heading">Aviso</h4>
+                                <p class="mb-0">No Existen areas medicas actualmente.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}

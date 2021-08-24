@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Listar Horarios {% endblock %}
+
+{% block body %} 
+
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item active">Horario</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Horarios
+                    </h4>
+                  
+                    <a class="btn btn-primary float-right" href="/schedule/new/">Nuevo</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        {% if schedules %}
+
+                            <table class="table data-show" id="schedules">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th>-</th>
+                                        <th>-</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for schedule in schedules %}
+                                        <tr>
+                                            <td>
+                                                {{ schedule.dayone }}
+                                                de
+                                                {{ schedule.fromhourdayone|date('h:i:a') }}
+                                                a
+                                                {{ schedule.tohourdayone|date('h:i:a') }}
+                                            </td>
+                                            <td>
+                                                {{ schedule.daytwo }}
+                                                de
+                                                {{ schedule.fromhourdaytwo|date('h:i:a') }}
+                                                a
+                                                {{ schedule.tohourdaytwo|date('h:i:a') }}
+                                            </td>
+                                            <td>
+                                                <a data-toggle="tooltip" data-placement="top" title="Ver" class="btn btn-primary" href="/schedule/{{ schedule.id }}">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a data-toggle="tooltip" data-placement="top" title="Editar" class="btn btn-light" href="/schedule/edit/{{ schedule.id }}">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a data-toggle="tooltip" data-placement="top" title="Eliminar" href="#" class="btn btn-danger delete-article" data-id="{{ schedule.id }}">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                <h4 class="alert-heading">Aviso</h4>
+                                <p class="mb-0">No Existen horarios actualmente.</p>
+                            </div>
+                            <a class="btn btn-primary float-right" href="/schedule/new/">Nuevo</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}

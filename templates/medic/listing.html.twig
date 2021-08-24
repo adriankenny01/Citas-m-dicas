@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Listado de medicos con sus horarios {% endblock %}
+
+{% block body %} 
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Listado de médicos con sus horarios
+                    </h4>
+                    <p class="card-category">
+                        Aquí aparecen todos los horarios asignados a cada <strong>médico</strong>.
+                    </p>
+                        {# <a class="btn btn-primary float-right" href="/group/new/">Nuevo</a> #}
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        {% if schedules %}
+                            <h2 class="mt-2 mb-4">Listado de medicos con sus horarios</h2>
+                            <ul class="list-group">
+                                {% for schedule in schedules %}
+                                        <li class="list-group-item">
+                                        <span class="font-weight-bold">Doctor/@ : </span> {{ schedule.name }} {{ schedule.last_name }} 
+                                        <span class="font-weight-bold"> | En horario : </span>{{ schedule.schedule.dayone }} 
+
+                                        - {{ schedule.schedule.fromhourdayone|date('h:i:a') }} a {{ schedule.schedule.tohourdayone|date('h:i:a') }} 
+                                        {{ schedule.schedule.daytwo }} {{ schedule.schedule.fromhourdaytwo|date('h:i:a') }} a {{ schedule.schedule.tohourdaytwo|date('h:i:a') }} 
+                                        </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <h4 class="alert-heading">Aviso</h4>
+                                <p class="mb-0">No Existen Horarios medicos actualmente atados a un medico</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}

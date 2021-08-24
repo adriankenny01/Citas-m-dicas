@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary pl-3">
+    
+      <a href="/" class="navbar-brand">Medical</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav" aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mobile-nav">
+          <ul class="navbar-nav ml-auto">
+              {# <li class="nav-item">
+                  <a href="/" class="nav-link">Inicio</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/appointment" class="nav-link">Citas</a>
+              </li> #}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Usuarios
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/user/">Listar Usuarios</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/user/new/">Nuevo</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Medicos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/medic/">Listar Medicos</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/medic/new/">Nuevo</a>
+                  {# <a class="dropdown-item" href="/group">Grupo Medico</a>
+                  <a class="dropdown-item" href="/medic/category">Area</a>
+                  <a class="dropdown-item" href="/medic/schedule/list">Horario medico</a> #}
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Empleados
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/employee/">Listar Empleados</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/employee/new/">Nuevo</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Pacientes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/patient/">Listar Pacientes</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/patient/new/">Nuevo</a>
+                </div>
+              </li>
+              {# <li class="nav-item">
+                  <a href="/vacation" class="nav-link">Vacaciones</a>
+              </li> #}
+              {# <li class="nav-item">
+                  <a href="/schedule" class="nav-link">Horario</a>
+              </li> #}
+              
+              <li class="nav-item text-white">
+                  <a href="#" class="nav-link text-white text-bold"> Logueado como : {{ app.user.username }} </a>
+              </li>
+              <li class="nav-item">
+                  <a href="{{ path('logout') }}" class="nav-link">Salir</a>
+              </li>
+              
+          </ul>
+      </div>
+   
+</nav>
+
+

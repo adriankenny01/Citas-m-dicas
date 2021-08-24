@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Asignar vacaciones {% endblock %}
+
+{% block body %} 
+
+<div class="content">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card card-user">
+              <div class="image">
+                <img src="{{ asset('paper/assets/img/damir-bosnjak.jpg') }}" alt="...">
+              </div>
+              <div class="card-body" style="min-height: 0">
+                <div class="author">
+                  <a href="#">
+                    <img class="avatar border-gray" src="{{ '/uploads/medic/' ~ image }}" alt="...">
+                    <h5 class="title">{{ full_name }}</h5>
+                  </a>
+                </div>
+              </div>
+              
+            </div>
+           
+          </div>
+          <div class="col-md-8">
+            <div class="card card-user">
+              <div class="card-header">
+                <h5 class="card-title">Asignar Vacaciones</h5>
+              </div>
+              <div class="card-body">
+                {{ form_start(form) }}
+                {# <form> #}
+                  <div class="row">
+                    <div class="col-md-6 p-2">
+                      <div class="form-group">
+                        {{ form_row(form.type) }}
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 p-2">
+                      <div class="form-group">
+                        {{ form_row(form.days_taken) }}
+                      </div>
+                    </div> 
+                    
+                  </div>
+                
+                 <div class="row">
+                    <div class="col-md-6 p-2">
+                      <div class="form-group">
+                        {{ form_row(form.reason) }}
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 p-2">
+                      <div class="form-group">
+                        {{ form_row(form.date_init) }}
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 p-2">
+                        {{ form_row(form.observations) }}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 p-2">
+                        {{ form_row(form.medic_id) }}
+                    </div>
+                    <div class="col-md-6 p-2">
+                        {{ form_row(form.employee_id) }}
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
+                        {{ form_row(form.save) }}
+                    </div>
+                  </div>
+                {# </form> #}
+                {{ form_end(form) }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %} 

@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Listado de Empleados {% endblock %}
+
+{% block body %} 
+
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item active">Empleado</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Empleados
+                    </h4>
+                    <p class="card-category">
+                        Here is a subtitle for this table</p>
+                    <a class="btn btn-primary float-right" href="/employee/new/">Nuevo</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        {% if employees %}
+
+                            <table class="table data-show" id="employees">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th>Nombre Completo</th>
+                                        {# <th>Cedula</th> #}
+                                        <th>Direccion</th>
+                                        <th>Telefono</th>
+                                        {# <th>Provincia</th> #}
+                                        {# <th>Codigo Postal</th> #}
+                                        {# <th>NIF</th> #}
+                                        {# <th>Social Security</th> #}
+                                        <th>Tipo empleado</th>   
+                                        {# <th>Estado</th> #}
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for employee in employees %}
+                                    <tr>
+                                        <td>{{ employee.fullName }}</td>
+                                        {# <td>{{ employee.cardId }}</td> #}
+                                        <td>{{ employee.address }}</td>
+                                        <td>{{ employee.phone }}</td>
+                                        {# <td>{{ employee.province }}</td> #}
+                                        {# <td>{{ employee.zipCode }}</td> #}
+                                        {# <td>{{ employee.nif }}</td> #}
+                                        {# <td>{{ employee.socialSecurity }}</td> #}
+                                        <td>{{ employee.tipoEmpleado }}</td>
+                                        {# <td>{{ employee.state }}</td> #}
+                                        <td>
+                                            <a data-toggle="tooltip" data-placement="top" title="Ver" href="/employee/{{ employee.id }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        </td>
+                                        <td>
+                                            <a data-toggle="tooltip" data-placement="top" title="Editar" href="/employee/edit/{{ employee.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                        <td>
+                                            <a data-toggle="tooltip" data-placement="top" title="Eliminar" href="#" class="btn btn-danger delete-article" data-id="{{ employee.id }}"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                        <td>
+                                            <a data-toggle="tooltip" data-placement="top" title="Vacaciones" href="/employee/vacation/{{ employee.id }}" class="btn btn-info"><i class="fas fa-calendar"></i></a>
+                                        </td>
+                                    </tr> 
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                <h4 class="alert-heading">Aviso</h4>
+                                <p class="mb-0">No Existen empleados actualmente.</p>
+                            </div>
+                            
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}
+

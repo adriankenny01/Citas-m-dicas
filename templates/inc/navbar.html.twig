@@ -1,0 +1,122 @@
+<div
+    class="sidebar" data-active-color="danger" data-color="white">
+    <!--
+            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+        -->
+    <div class="logo">
+        <a class="simple-text logo-mini" href="http://www.creative-tim.com">
+            <div class="logo-image-small">
+                <img src="{{ (app.user.photo) ? '/uploads/patient/' ~ app.user.photo : asset('paper/assets/img/logo-small.png') }}">
+            </div>
+        </a>
+        <a class="simple-text logo-normal" href="http://www.creative-tim.com">
+            {{ app.user.username }}
+            <!-- <div class="logo-image-big">
+                <img src="../assets/img/logo-big.png">
+            </div> -->
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="{{ app.request.get('_route') == 'dashboard' ? 'active' }}">
+                <a href="{{ path('dashboard') }}">  
+                    <div class="icon-big text-center">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                    <p>Panel de Inicio</p>
+                </a>
+            </li>
+            {# <li class="{{ app.request.get('_route') == 'employee_list' ? 'active' : (app.request.get('_route')) == 'new_employee' ? 'active' : (app.request.get('_route')) == 'employee_show' ? 'active' : (app.request.get('_route')) == 'update_employee' ? 'active' : (app.request.get('_route')) == 'employee_vacation' ? 'active'  }}">
+                <a href="{{ path('employee_list') }}">
+                    <div class="icon-big text-center">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <p>Empleados</p> 
+                </a>
+            </li> #}
+            {%  if app.user.role == 'ROLE_ADMIN' %}
+            <li class="{{ app.request.get('_route') == 'medic_list' ? 'active' : (app.request.get('_route')) == 'new_medic' ? 'active' : (app.request.get('_route')) == 'update_medic' ? 'active' : (app.request.get('_route')) == 'medic_show' ? 'active'  : (app.request.get('_route')) == 'medic_vacation' ? 'active'  }}">
+                <a href="{{ path('medic_list') }}">
+                    <div class="icon-big text-center">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <p>Médicos</p> 
+                </a>
+            </li>
+            {% endif %}
+            {%  if app.user.role == 'ROLE_ADMIN' %}
+            <li class="{{ app.request.get('_route') == 'patient_list' ? 'active' : (app.request.get('_route')) == 'patient_show' ? 'active' : (app.request.get('_route')) == 'update_patient' ? 'active' }}">
+                <a href="{{ path('patient_list') }}">
+                    <div class="icon-big text-center">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <p>Pacientes</p>
+                </a>
+            </li>
+            {% endif %}
+            <li class="{{ app.request.get('_route') == 'appointment_list' ? 'active' : (app.request.get('_route')) == 'new_appointment' ? 'active' : (app.request.get('_route')) == 'update_appointment' ? 'active' }} ">
+                <a href="{{ path('appointment_list') }}">
+                    <div class="icon-big text-center">
+                       <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <p>Citas</p>
+                </a>
+            </li>
+            {%  if app.user.role == 'ROLE_ADMIN' %}
+            <li class="{{ app.request.get('_route') == 'user_list' ? 'active': (app.request.get('_route')) == 'new_user' ? 'active' : (app.request.get('_route')) == 'update_user' ? 'active' : (app.request.get('_route')) == 'user_show' ? 'active' }}">
+                <a href="{{ path('user_list') }}">
+                    <div class="icon-big text-center">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <p>Usuarios</p>
+                </a>
+            </li>
+            {% endif %}
+            {%  if app.user.role == 'ROLE_ADMIN' %}
+            <li class="{{ app.request.get('_route') == 'schedule_list' ? 'active' : (app.request.get('_route')) == 'new_schedule' ? 'active' : (app.request.get('_route')) == 'update_schedule' ? 'active' : (app.request.get('_route')) == 'schedule_show' ? 'active' }}">
+                <a href="{{ path('schedule_list') }}">
+                    <div class="icon-big text-center">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <p>Horario</p>
+                </a>
+            </li>
+            {% endif %}
+            <li class="{{ app.request.get('_route') == 'medic_schedule' ? 'active' }}">
+                <a href="{{ path('medic_schedule') }}">
+                    <div class="icon-big text-center">
+                        <i class="fas fa-book-medical"></i>
+                    </div>
+                    <p>Horario Medico</p>
+                </a>
+            </li>
+            {%  if app.user.role == 'ROLE_ADMIN' %}
+            <li class="{{ app.request.get('_route') == 'category_list' ? 'active' : (app.request.get('_route')) == 'new_category' ? 'active' : (app.request.get('_route')) == 'category_show' ? 'active' : (app.request.get('_route')) == 'update_category' ? 'active' }}">
+                <a href="{{ path('category_list') }}">
+                    <div class="icon-big text-center">
+                        <i class="fas fa-diagnoses"></i>
+                    </div>
+                    <p>Area</p>
+                </a>
+            </li>
+            {% endif %}
+            {%  if app.user.role == 'ROLE_ADMIN' %}
+            <li class="{{ app.request.get('_route') == 'group_list' ? 'active' : (app.request.get('_route')) == 'new_group' ? 'active' : (app.request.get('_route')) == 'update_group' ? 'active' }}">
+                <a href="{{ path('group_list') }}">
+                    <div class="icon-big text-center">
+                        <i class="fas fa-notes-medical"></i>
+                    </div>
+                    <p>Grupo Medico</p>
+                </a>
+            </li>
+            {% endif %}
+            {# <li class="active-pro">
+                <a href="{{ path('user_list') }}">
+                    <i class="nc-icon nc-spaceship"></i>
+                    <p>Upgrade to PRO</p>
+                </a>
+            </li> #}
+        </ul>
+    </div>
+</div>
+

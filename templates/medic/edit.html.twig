@@ -1,0 +1,213 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {# <link rel="stylesheet" href="{{ asset('css/form.css') }}"/> #}
+{% endblock %}
+
+{% block title %}
+    Editar Médico
+{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <div class="image">
+                        <img alt="..." src="{{ asset('paper/assets/img/damir-bosnjak.jpg') }}">
+                    </div>
+                    <div class="card-body" style="min-height: 0">
+                        <div class="author">
+                            <a href="#">
+                                <img alt="..." id="perfil" class="avatar border-gray" src="{{  (image) ? asset('uploads/medic/') ~ image : asset('uploads/medic/stethoscope.png')  }}">
+                                <h5 class="title" id="full_name">{{ full_name }}</h5>
+                            </a>
+                            <p class="description">
+                                {{ category }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card"></div>
+
+            </div>
+            <div class="col-md-8">
+                <div class="card card-user">
+                    <div class="card-header">
+                        <h5 class="card-title">Editar Medico</h5>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                        
+                        <div class="row">
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.name) }}
+                                </div>
+                            </div>
+
+                             <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.last_name) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.address) }}
+                                </div>
+                            </div>
+                            
+                            
+
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.phone) }}
+                                </div>
+                            </div>
+
+                           
+
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.social_security) }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.card_id) }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.number_of_collegiate) }}
+                                </div>
+                            </div>
+
+                            
+
+                        </div>
+                        
+                        <div class="row">
+                             <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.province) }}
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.image) }}
+                                </div>
+                            </div>
+
+
+                            
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.MedicGroup) }}
+                                </div>
+                            </div>
+
+                            
+
+                             <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.category) }}
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        
+
+                        <div class="row">
+                            <div class="col-md-12 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.Schedule) }}
+                                </div>
+                            </div>
+
+                            {# <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.category) }}
+                                </div>
+                            </div> #}
+                            
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.date_start) }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.date_end) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="update ml-auto mr-auto">
+                                {{ form_row(form.save) }}
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/readImage.js') }}" type="text/javascript"></script>
+
+<script>
+
+    $("#form_name").keyup(function(){
+        $('#full_name').text($('#form_name').val());
+    });
+
+    document.getElementById("form_MedicGroup").addEventListener("change", myFunction);   
+    
+    document.getElementsByName("form").onload = function() {myFunction()};
+
+    document.getElementById("form_date_end").previousSibling.style.display = 'none';
+            
+    function myFunction() {
+        var x = document.getElementById("form_MedicGroup").value;
+        if(x === '10'){
+            document.getElementById("form_date_end").style.display = 'block';
+            document.getElementById("form_date_end").previousSibling.style.display = 'block';
+        }else{
+            document.getElementById("form_date_end").style.display = 'none';
+            document.getElementById("form_date_end").previousSibling.style.display = 'none';
+        }
+    }
+    
+    // $('.datepicker').datepicker({
+    //     //startDate: '-3d'
+    // });
+</script>
+
+{% endblock %}

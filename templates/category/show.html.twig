@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ 'Área : ' ~ category.area }} {% endblock %}
+
+{% block body %} 
+<div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="/category">Área</a></li>
+                    <li class="breadcrumb-item active">Mostrar</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            {{ 'Área : ' ~ category.area }}
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {% if category %}
+
+                                <ul class="list-group">
+                                  <li class="list-group-item"><strong>Área : </strong>{{ category.area }}</li>
+                                  <li class="list-group-item">
+                                    {# <img class="" src="" alt="{{ 'Imagen de ' ~ category.area }} "> #}
+                                    <i class="fa-b {{ (category.icon) }}"></i>
+                                  </li>
+                                </ul>
+                                <a class="btn float-right" href="/medic/category">Volver</a>  
+
+                            {% else %}
+                                <div class="alert alert-dismissible alert-warning">
+                                    <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                    <h4 class="alert-heading">Aviso</h4>
+                                    <p class="mb-0">No Existen Áreas actualmente.</p>
+                                </div>
+                                <a class="btn btn-primary float-right" href="/medic/category">Nuevo</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} 

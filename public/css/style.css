@@ -1,0 +1,34 @@
+.footer {
+    position: absolute;
+    bottom: 25;
+    width: 100%;
+    height: 60px;
+    margin-top:  3rem;
+}
+
+#form_date_end {
+    display: none;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.9rem + 2.1px);
+}
+
+/* hide scrollbar responsive */
+@media (min-width: 454px) {
+    .table-responsive {
+        overflow:hidden;
+    }
+  }
+
+
+/* big icon  */
+.fa-b {
+    font-size: 64px;
+}
+
+/* change placeholder color */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #DDDDDD;
+    opacity: 1; /* Firefox */
+  }

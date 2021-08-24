@@ -1,0 +1,65 @@
+{% extends 'base.empty.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}"/>
+{% endblock %}
+
+{% block title %}
+    Nuevo Paciente
+{% endblock %}
+
+{% block body %}
+
+    
+    {{ form_start(form , {'attr': {'class': 'form-signin text-center'}}) }}
+
+    <h5 class="card-title">Nuevo Paciente</h5>
+
+    <div class="form-group">
+        {{ form_row(form.photo) }}
+    </div>
+
+
+    <div class="form-group">
+        {{ form_row(form.full_name) }}
+    </div>
+
+
+    <div class="form-group">
+        {{ form_row(form.social_security) }}
+</div>
+        <div class="form-group">
+            {{ form_row(form.email) }}
+        </div>
+
+
+        <div class="form-group">
+            {{ form_row(form.card_id) }}
+        </div>
+
+
+        <div class="form-group">
+            {{ form_row(form.phone) }}
+        </div>
+
+
+        <div class="form-group">
+            {{ form_row(form.address) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_row(form.username) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_row(form.password) }}
+        </div>
+
+        <div class="update ml-auto mr-auto">
+            {{ form_row(form.save) }}
+        </div>
+
+        {{ form_end(form) }}
+
+    {% endblock %}
+

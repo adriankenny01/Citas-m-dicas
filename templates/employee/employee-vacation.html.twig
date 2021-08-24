@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Listado de trabajadores para tomar vacaciones {% endblock %}
+
+{% block body %} 
+
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="/employee">Empleado</a></li>
+                <li class="breadcrumb-item active">Vacaciones</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Empleados
+                    </h4>
+                    <p class="card-category">
+                        Listado de trabajadores para tomar vacaciones
+                    </p>
+                    {# <a class="btn btn-primary float-right" href="/employee/new/">Nuevo</a> #}
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        {% if employee_vacation %}
+
+                            <table class="table data-show" id="employees">
+                                <thead class=" text-primary">
+                                    <tr>
+                                         <th>Nombre Completo</th>
+                                        <th>Tipo <small>(medico o empleado)</small></th>
+                                        <th>Fecha entrada</th>
+                                        <th>Dias ganados</th>
+                                        <th>Dias tomados </th>
+                                        <th>Dias restantes </th>
+                                        <th>Asignar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ employee_vacation.fullName }}</td>
+                                        <td>Empleado</td>
+                                        <td>{{ employee_vacation.dateStart|date('d/F/y') }}</td>
+                                        <td>{{ vacationDays }}</td>
+                                        <td>{{ vacationTaken }}</td>
+                                        <td>{{ vacationDays - vacationTaken }}</td>
+                                        <td>
+                                            <a href="/vacation/assign/0/{{ employee_vacation.id }}" class="btn btn-info"><i class="fas fa-calendar"></i></a>
+                                        </td>
+                                    </tr> 
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                <h4 class="alert-heading">Aviso</h4>
+                                <p class="mb-0">No Existen empleados actualmente.</p>
+                            </div>
+                            
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}
+
+
+
+

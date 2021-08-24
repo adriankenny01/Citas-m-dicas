@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Listado de Pacientes {% endblock %}
+
+{% block body %} 
+
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item active">Pacientes</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Listado de Pacientes
+                    </h4>
+                    {# <p class="card-category">
+                        Here is a subtitle for this table
+                    </p> #}
+                    <a class="btn btn-primary float-right" href="/patient/new/">Nuevo</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        {% if patients %}
+
+                            <table class="table data-show" id="patients">
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th>Foto</th>
+                                        <th>Nombre Completo</th>
+                                        <th>Cedula</th>
+                                        <th>Direccion</th>
+                                        <th>Telefono</th>
+                                        <th>Social Security</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for patient in patients %}
+                                    <tr>
+                                        <td>
+                                            {% if patient.photo %}
+                                                <img src="{{ asset('uploads/patient/' ~ patient.photo )  }} " alt="" width="74" height="74">
+                                            {% else %}
+                                                Foto no disponible.
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ patient.fullname }}</td>
+                                        <td>{{ patient.cardid }}</td>
+                                        <td>{{ patient.address }}</td>
+                                        <td>{{ patient.phone }}</td>
+                                        <td>{{ patient.socialsecurity }}</td>
+                                        <td>
+                                            <a data-toggle="tooltip" data-placement="top" title="Ver" href="/patient/{{ patient.id }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        </td>
+                                        <td> 
+                                            <a data-toggle="tooltip" data-placement="top" title="Editar" href="/patient/edit/{{ patient.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                        <td>
+                                            <a data-toggle="tooltip" data-placement="top" title="Eliminar" href="#" class="btn btn-danger delete-article" data-id="{{ patient.id }}"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr> 
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <h4 class="alert-heading">Aviso</h4>
+                                <p class="mb-0">No Existen pacientes actualmente.</p>
+                            </div>
+                            
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}
+

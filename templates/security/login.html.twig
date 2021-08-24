@@ -1,0 +1,27 @@
+{% extends 'base.empty.html.twig' %}
+
+{% block title %}Login!{% endblock %}
+
+{% block body %}
+
+    <form action="{{ path('login') }}" method="POST" class="form-signin text-center">
+        <h1 class="mb-4">Login</h1>
+        <img class="mb-4" src="{{ asset('img/user.svg') }}" alt="" width="72" height="72">
+        
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <input class="form-control"  type="text" name="_username" value="{{ last_username}}" required placeholder="Usuario">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="_password"  required placeholder="*****">
+        </div>    
+        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Acceder</button>
+        <a class="float-right" href="{{ path('new_patient') }}" title="Crear nuevo paciente"> Nueva Cuenta </a>
+    </form> 
+
+{% endblock %}

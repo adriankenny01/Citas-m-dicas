@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ medic[0].name}} {{ medic[0].last_name }} {% endblock %}
+
+{% block body %} 
+<div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="/medic">Médico</a></li>
+                    <li class="breadcrumb-item active">Mostrar</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            {{ medic[0].name}} {{ medic[0].last_name }}
+                        </h4>
+                        <p class="card-category">
+                            Especialidad en <i>{{ medic[0].area_medica }}</i> , Execuatur : {{ medic[0].number_of_collegiate }}  
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {% if medic %}
+
+                                <ul class="list-group">
+                                 <li class="list-group-item">
+                                    <img src="{{  (medic[0].image) ? asset('uploads/medic/') ~ medic[0].image : asset('uploads/medic/stethoscope.png')  }}" width="72px" alt="Perfil"/>
+                                </li>
+                                <li class="list-group-item"><strong>Direccion: </strong>{{ medic[0].address }}</li>
+                                <li class="list-group-item"><strong>Telefono: </strong>{{ medic[0].phone }}</li>
+                                <li class="list-group-item"><strong>Provincia: </strong>{{ medic[0].province }}</li>
+                                <li class="list-group-item"><strong>Cédula: </strong>{{ medic[0].card_id }}</li>
+                                <li class="list-group-item"><strong>Tipo empleado: </strong>{{ medic[0].grupo }}</li>
+                                <li class="list-group-item"><strong>Fecha Inicio: </strong>{{ medic[0].date_start|date('Y-m-d')  }}</li>
+                                <li class="list-group-item"><strong>Fecha Fin: </strong>{{ medic[0].date_end|date('Y-m-d')  }}</li>
+                                <li class="list-group-item"><strong>Categoria: </strong>{{ medic[0].area_medica }}</li>
+                                </ul>
+                                <a class="btn float-right" href="/medic">Volver</a>  
+
+                            {% else %}
+                                <div class="alert alert-dismissible alert-warning">
+                                    <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                    <h4 class="alert-heading">Aviso</h4>
+                                    <p class="mb-0">No Existe este médico actualmente.</p>
+                                </div>
+                                <a class="btn btn-primary float-right" href="/medic/new">Nuevo</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} 

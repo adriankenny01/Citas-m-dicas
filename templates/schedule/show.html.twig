@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Horario
+{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="/schedule">Citas</a></li>
+                    <li class="breadcrumb-item active">Mostrar</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            Horario
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {% if schedule %}
+
+                                <h4>{{ schedule.dayone}}
+                                    -
+                                    {{ schedule.daytwo }}
+                                </h4>
+                                <h5>{{ schedule.fromhourdayone|date('h:i:a') }}
+                                    -
+                                    {{ schedule.tohourdayone|date('h:i:a') }}
+                                </h5>
+                                <h5>{{ schedule.fromhourdaytwo|date('h:i:a') }}
+                                    -
+                                    {{ schedule.tohourdaytwo|date('h:i:a') }}
+                                </h5>
+                                 <a class="btn float-right" href="/schedule">Volver</a>  
+                            {% else %}
+                                <div class="alert alert-dismissible alert-warning">
+                                    <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                    <h4 class="alert-heading">Aviso</h4>
+                                    <p class="mb-0">No Existen horarios actualmente.</p>
+                                </div>
+                                <a class="btn btn-primary float-right" href="/schedule/new/">Nuevo</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

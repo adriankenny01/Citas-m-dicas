@@ -1,0 +1,9 @@
+# See https://symfony.com/doc/current/email/dev_environment.html
+swiftmailer:
+    # send all emails to a specific address
+    #delivery_addresses: ['me@example.com']
+
+    # .env (or override MAILER_URL in .env.local to avoid committing your changes)
+
+    # MAILER_URL=gmail://medicalappv1@gmail.com:]4W]N7gNv~AXKs22@localhost
+    # MAILER_URL=null://localhost

@@ -1,0 +1,35 @@
+{% extends 'base.empty.html.twig' %}
+
+{% block title %} Nuevo Usuario {% endblock %}
+
+{% block stylesheets %}{% endblock %}
+{% block body %}
+
+    {{ form_start(form , {'attr': {'class': 'form-signin text-center'}}) }}
+        
+        {% if form_errors(form) %}
+            <div class="alert alert-danger">
+                {{ form_errors(form) }}
+            </div>
+        {% endif %}
+
+        <h3 class="mb-4">Nuevo Usuario</h3>
+        <img class="mb-4" src="{{ asset('img/user.svg') }}" alt="" width="72" height="72">
+        
+        <div class="form-group">
+            {{ form_row(form.name) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_row(form.username) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.email) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.password) }}
+        </div>
+        
+    {{ form_end(form) }}
+
+{% endblock %}

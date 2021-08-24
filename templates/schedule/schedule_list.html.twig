@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Horarios de médicos {% endblock %}
+
+{% block body %} 
+{# <h1>{{ schedules.day_one}} - {{ schedules.daytwo }}</h1>
+<h2>{{ schedules.fromhour|date('h:i:a') }} - {{ schedules.tohour|date('h:i:a') }}</h2> #}
+
+{% for schedule in schedules %}
+    <tr>
+        <td>{{ schedule.dayone }} -  {{ schedule.fromhour|date('h:i:a') }}</td>
+        <td>{{ schedule.daytwo }} - {{ schedule.tohour|date('h:i:a') }}</td>
+        <td>{{ schedule.state }}</td>
+        <td>
+        <a href="/schedule/{{ schedule.id }}" class="btn btn-primary">Show</a>
+        <a href="/schedule/edit/{{ schedule.id }}" class="btn btn-light">Edit</a>
+        <a href="#" class="btn btn-danger delete-article" data-id="{{ schedule.id }}">Delete</a>
+        </td>
+    </tr> 
+{% endfor %}
+
+
+<hr>
+<a href="/schedule/">Volver</a>
+{% endblock %} 

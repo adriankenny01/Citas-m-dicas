@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Bienvenido!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        {# <link rel="stylesheet" href="/css/cosmo/bootstrap.min.css"> #}
+        <link rel="stylesheet" href="/css/login.css"/>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet">
+        <!-- CSS Files -->
+        <link href="{{ asset('/paper/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/paper/assets/css/paper-dashboard.css?v=2.0.0') }}" rel="stylesheet" />
+        {# <link href="{{ asset('/css/login.css') }}" rel="stylesheet" /> #}
+
+    </head>
+    <body>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        {# {{ include('inc/footer.html.twig') }} #}
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('paper/assets/js/core/popper.min.js') }}"></script>
+        <script src="{{ asset('paper/assets/js/core/bootstrap.min.js') }}"></script>
+        {% block javascripts %}
+            <script>
+              
+            </script>    
+        {% endblock %}
+    </body>
+</html>

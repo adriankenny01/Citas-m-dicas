@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}"/>
+{% endblock %}
+
+{% block title %}
+    Editar Paciente
+{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="/patient">Pacientes</a></li>
+                    <li class="breadcrumb-item active">Editar</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <div class="image">
+                        <img alt="..." src="{{ asset('paper/assets/img/damir-bosnjak.jpg') }}">
+                    </div>
+                    <div class="card-body" style="min-heigth: 0">
+                        <div class="author">
+                            <a href="#">
+                                <img alt="..." class="avatar border-gray" src="{{  asset('uploads/patient/') ~ photo }} ">
+                                <h5 class="title">{{ full_name }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-8">
+                <div class="card card-user">
+                    <div class="card-header">
+                    <h5 class="card-title"><strong>Editar Paciente : </strong>  {{ full_name }} </h5>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+                        
+                        <div class="row">
+                            <div class="col-md-12 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.photo) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.full_name) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.social_security) }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.email) }}
+                                </div>
+                            </div>
+                        </div>
+
+                
+                        <div class="row">
+                            
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.card_id) }}
+                                </div>
+                            </div>
+                        
+
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.phone) }}
+                                </div>
+                            </div>
+                           
+                        </div>
+
+                         <div class="row">
+                            
+                            <div class="col-md-12 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.address) }}
+                                </div>
+                            </div>
+                           
+                        </div>
+                        
+                        <div class="row">
+                            <div class="update ml-auto mr-auto">
+                                {{ form_row(form.save) }}
+                            </div>
+                        </div>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
